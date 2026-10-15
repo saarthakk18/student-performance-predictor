@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Performance Predictor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <p class="eyebrow">AI-POWERED EDUCATION</p>
+      <h1>Student Performance Predictor</h1>
+      <p>Enter student details to estimate the exam score using a trained Random Forest model.</p>
+    </header>
+
+    <form id="predictionForm">
+      <h2>Academic details</h2>
+      <div class="grid">
+        <label>Hours studied per day
+          <input name="Hours_Studied" type="number" min="0" max="24" value="3" required>
+        </label>
+        <label>Attendance (%)
+          <input name="Attendance" type="number" min="0" max="100" value="84" required>
+        </label>
+        <label>Sleep hours
+          <input name="Sleep_Hours" type="number" min="0" max="24" value="7" required>
+        </label>
+        <label>Previous score
+          <input name="Previous_Scores" type="number" min="0" max="100" value="73" required>
+        </label>
+        <label>Tutoring sessions
+          <input name="Tutoring_Sessions" type="number" min="0" max="100" value="2" required>
+        </label>
+        <label>Physical activity (hours)
+          <input name="Physical_Activity" type="number" min="0" max="24" value="3" required>
+        </label>
+      </div>
+
+      <h2>Student background</h2>
+      <div class="grid">
+        <label>Parental involvement
+          <select name="Parental_Involvement">
+            <option>Low</option><option selected>Medium</option><option>High</option>
+          </select>
+        </label>
+        <label>Access to resources
+          <select name="Access_to_Resources">
+            <option>Low</option><option>Medium</option><option selected>High</option>
+          </select>
+        </label>
+        <label>Extracurricular activities
+          <select name="Extracurricular_Activities"><option>Yes</option><option selected>No</option></select>
+        </label>
+        <label>Motivation level
+          <select name="Motivation_Level"><option>Low</option><option selected>Medium</option><option>High</option></select>
+        </label>
+        <label>Internet access
+          <select name="Internet_Access"><option selected>Yes</option><option>No</option></select>
+        </label>
+        <label>Family income
+          <select name="Family_Income"><option>Low</option><option selected>Medium</option><option>High</option></select>
+        </label>
+        <label>Teacher quality
+          <select name="Teacher_Quality"><option>Low</option><option selected>Medium</option><option>High</option></select>
+        </label>
+        <label>School type
+          <select name="School_Type"><option selected>Public</option><option>Private</option></select>
+        </label>
+        <label>Peer influence
+          <select name="Peer_Influence"><option>Negative</option><option>Neutral</option><option selected>Positive</option></select>
+        </label>
+        <label>Learning disabilities
+          <select name="Learning_Disabilities"><option selected>No</option><option>Yes</option></select>
+        </label>
+        <label>Parental education
+          <select name="Parental_Education_Level">
+            <option>High School</option><option selected>College</option><option>Postgraduate</option>
+          </select>
+        </label>
+        <label>Distance from home
+          <select name="Distance_from_Home"><option selected>Near</option><option>Moderate</option><option>Far</option></select>
+        </label>
+        <label>Gender
+          <select name="Gender"><option selected>Male</option><option>Female</option></select>
+        </label>
+      </div>
+
+      <button id="predictButton" type="submit">Predict exam score</button>
+      <p id="status" role="status"></p>
+    </form>
+
+    <section id="result" class="result" hidden aria-live="polite">
+      <h2>Prediction result</h2>
+      <p>Estimated exam score</p>
+      <div id="score" class="score">--</div>
+      <p id="model"></p>
+      <h3>Study recommendations</h3>
+      <ul id="recommendations"></ul>
+      <p class="note">This is a model estimate, not a guaranteed exam result.</p>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
