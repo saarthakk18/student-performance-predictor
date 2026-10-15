@@ -4,103 +4,274 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Performance Predictor</title>
+  <meta name="theme-color" content="#f5f6f2">
+  <meta name="description" content="Student academic performance prediction dashboard">
+  <title>Student Insights — Dashboard</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="container">
-    <header>
-      <p class="eyebrow">AI-POWERED EDUCATION</p>
-      <h1>Student Performance Predictor</h1>
-      <p>Enter student details to estimate the exam score using a trained Random Forest model.</p>
-    </header>
+  <div class="dashboard">
 
-    <form id="predictionForm">
-      <h2>Academic details</h2>
-      <div class="grid">
-        <label>Hours studied per day
-          <input name="Hours_Studied" type="number" min="0" max="24" value="3" required>
-        </label>
-        <label>Attendance (%)
-          <input name="Attendance" type="number" min="0" max="100" value="84" required>
-        </label>
-        <label>Sleep hours
-          <input name="Sleep_Hours" type="number" min="0" max="24" value="7" required>
-        </label>
-        <label>Previous score
-          <input name="Previous_Scores" type="number" min="0" max="100" value="73" required>
-        </label>
-        <label>Tutoring sessions
-          <input name="Tutoring_Sessions" type="number" min="0" max="100" value="2" required>
-        </label>
-        <label>Physical activity (hours)
-          <input name="Physical_Activity" type="number" min="0" max="24" value="3" required>
-        </label>
+    <aside class="sidebar">
+      <a class="brand" href="#overview">
+        <span class="brand-mark">S.</span>
+        <span class="brand-name">student insights
+          <small>ACADEMIC ANALYTICS</small>
+        </span>
+      </a>
+
+      <p class="nav-caption">WORKSPACE</p>
+      <nav class="side-nav">
+        <a class="nav-link active" href="#overview">
+          <span>▦</span> Overview
+        </a>
+        <a class="nav-link" href="#student-form">
+          <span>＋</span> New prediction
+        </a>
+        <a class="nav-link" href="#methodology">
+          <span>◷</span> Methodology
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="sidebar-orb">↗</div>
+        <p class="sidebar-title">Make progress visible.</p>
+        <p class="sidebar-copy">Use your academic habits to explore your estimated performance.</p>
+        <span class="version">STUDENT PROJECT · 2026</span>
+      </div>
+    </aside>
+
+    <main class="workspace" id="overview">
+      <header class="topbar">
+        <div class="breadcrumb">Workspace <span>/</span> Overview</div>
+        <div class="live-status"><span></span> Prediction system</div>
+      </header>
+
+      <section class="welcome">
+        <div>
+          <p class="eyebrow">ACADEMIC PERFORMANCE · DASHBOARD</p>
+          <h1>Your progress,<br><span>put into perspective.</span></h1>
+          <p class="welcome-copy">
+            Explore how study habits, academic history and student background
+            relate to your estimated exam performance.
+          </p>
+        </div>
+        <div class="date-card">
+          <span class="date-icon">✳</span>
+          <span>YOUR WORKSPACE</span>
+          <strong>Performance<br>estimator</strong>
+          <small>Machine learning powered</small>
+        </div>
+      </section>
+
+      <section class="metrics" aria-label="System overview">
+        <article class="metric-card">
+          <span class="metric-icon">01</span>
+          <p>INPUT FEATURES</p>
+          <strong>19</strong>
+          <small>Academic and background data</small>
+        </article>
+        <article class="metric-card">
+          <span class="metric-icon">02</span>
+          <p>PREDICTION MODEL</p>
+          <strong>Random Forest</strong>
+          <small>Trained machine learning pipeline</small>
+        </article>
+        <article class="metric-card">
+          <span class="metric-icon">03</span>
+          <p>OUTPUT</p>
+          <strong>Score / 100</strong>
+          <small>Estimated exam performance</small>
+        </article>
+      </section>
+
+      <div class="content-grid">
+        <section class="form-card" id="student-form">
+          <div class="card-heading">
+            <div>
+              <p class="eyebrow">PREDICTION INPUT</p>
+              <h2>Student profile</h2>
+              <p class="muted">Enter your details to generate an estimate.</p>
+            </div>
+            <span class="step-badge">STEP 01 / 02</span>
+          </div>
+
+          <form id="predictionForm">
+            <section class="form-section">
+              <div class="section-heading">
+                <span class="section-number">01</span>
+                <div>
+                  <h3>Academic habits</h3>
+                  <p>Study routine and academic history</p>
+                </div>
+              </div>
+
+              <div class="grid">
+                <label>Hours studied per day
+                  <input name="Hours_Studied" type="number" min="0" max="24" value="3" required>
+                </label>
+                <label>Attendance (%)
+                  <input name="Attendance" type="number" min="0" max="100" value="84" required>
+                </label>
+                <label>Sleep hours
+                  <input name="Sleep_Hours" type="number" min="0" max="24" value="7" required>
+                </label>
+                <label>Previous score
+                  <input name="Previous_Scores" type="number" min="0" max="100" value="73" required>
+                </label>
+                <label>Tutoring sessions
+                  <input name="Tutoring_Sessions" type="number" min="0" max="100" value="2" required>
+                </label>
+                <label>Physical activity (hours)
+                  <input name="Physical_Activity" type="number" min="0" max="24" value="3" required>
+                </label>
+              </div>
+            </section>
+
+            <section class="form-section">
+              <div class="section-heading">
+                <span class="section-number">02</span>
+                <div>
+                  <h3>Student background</h3>
+                  <p>Learning environment and available support</p>
+                </div>
+              </div>
+
+              <div class="grid">
+                <label>Parental involvement
+                  <select name="Parental_Involvement" required>
+                    <option>Low</option><option selected>Medium</option><option>High</option>
+                  </select>
+                </label>
+                <label>Access to resources
+                  <select name="Access_to_Resources" required>
+                    <option>Low</option><option>Medium</option><option selected>High</option>
+                  </select>
+                </label>
+                <label>Extracurricular activities
+                  <select name="Extracurricular_Activities" required>
+                    <option>Yes</option><option selected>No</option>
+                  </select>
+                </label>
+                <label>Motivation level
+                  <select name="Motivation_Level" required>
+                    <option>Low</option><option selected>Medium</option><option>High</option>
+                  </select>
+                </label>
+                <label>Internet access
+                  <select name="Internet_Access" required>
+                    <option selected>Yes</option><option>No</option>
+                  </select>
+                </label>
+                <label>Family income
+                  <select name="Family_Income" required>
+                    <option>Low</option><option selected>Medium</option><option>High</option>
+                  </select>
+                </label>
+                <label>Teacher quality
+                  <select name="Teacher_Quality" required>
+                    <option>Low</option><option selected>Medium</option><option>High</option>
+                  </select>
+                </label>
+                <label>School type
+                  <select name="School_Type" required>
+                    <option selected>Public</option><option>Private</option>
+                  </select>
+                </label>
+                <label>Peer influence
+                  <select name="Peer_Influence" required>
+                    <option>Negative</option><option>Neutral</option><option selected>Positive</option>
+                  </select>
+                </label>
+                <label>Learning disabilities
+                  <select name="Learning_Disabilities" required>
+                    <option selected>No</option><option>Yes</option>
+                  </select>
+                </label>
+                <label>Parental education
+                  <select name="Parental_Education_Level" required>
+                    <option>High School</option><option selected>College</option><option>Postgraduate</option>
+                  </select>
+                </label>
+                <label>Distance from home
+                  <select name="Distance_from_Home" required>
+                    <option selected>Near</option><option>Moderate</option><option>Far</option>
+                  </select>
+                </label>
+                <label>Gender
+                  <select name="Gender" required>
+                    <option selected>Male</option><option>Female</option>
+                  </select>
+                </label>
+              </div>
+            </section>
+
+            <div class="form-actions">
+              <p>Review your inputs before generating the estimate.</p>
+              <button id="predictButton" type="submit">
+                Generate prediction <span>↗</span>
+              </button>
+            </div>
+            <p id="status" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <aside class="right-column">
+          <section id="result" class="result" hidden aria-live="polite">
+            <div class="result-top">
+              <div>
+                <p class="eyebrow">MODEL OUTPUT</p>
+                <h2>Your estimate</h2>
+              </div>
+              <span class="result-symbol">↗</span>
+            </div>
+            <p class="result-label">Estimated exam score</p>
+            <div class="score-row">
+              <div id="score" class="score">--</div>
+              <span class="score-unit">/ 100<br><small>Predicted score</small></span>
+            </div>
+            <p id="model" class="model-label"></p>
+            <div class="score-track"><span></span></div>
+            <div class="recommendation-panel">
+              <h3>Recommended next steps</h3>
+              <ul id="recommendations"></ul>
+            </div>
+            <p class="note">This is an estimate, not a guaranteed exam result.</p>
+          </section>
+
+          <section class="insight-card" id="methodology">
+            <div class="insight-icon">✳</div>
+            <p class="eyebrow">HOW IT WORKS</p>
+            <h3>From your inputs to an estimate.</h3>
+            <p class="muted">Your profile is sent to a trained machine learning model, which returns a predicted exam score.</p>
+            <div class="process-step">
+              <span>01</span>
+              <div><strong>Enter your profile</strong><small>Study habits and background</small></div>
+            </div>
+            <div class="process-step">
+              <span>02</span>
+              <div><strong>Run the model</strong><small>Process your supplied inputs</small></div>
+            </div>
+            <div class="process-step">
+              <span>03</span>
+              <div><strong>Review the estimate</strong><small>Score and suggested next steps</small></div>
+            </div>
+          </section>
+
+          <section class="disclaimer-card">
+            <span>ⓘ</span>
+            <p><strong>Keep in mind</strong><br>This tool is for academic exploration. Actual exam results depend on many factors and may differ from the prediction.</p>
+          </section>
+        </aside>
       </div>
 
-      <h2>Student background</h2>
-      <div class="grid">
-        <label>Parental involvement
-          <select name="Parental_Involvement">
-            <option>Low</option><option selected>Medium</option><option>High</option>
-          </select>
-        </label>
-        <label>Access to resources
-          <select name="Access_to_Resources">
-            <option>Low</option><option>Medium</option><option selected>High</option>
-          </select>
-        </label>
-        <label>Extracurricular activities
-          <select name="Extracurricular_Activities"><option>Yes</option><option selected>No</option></select>
-        </label>
-        <label>Motivation level
-          <select name="Motivation_Level"><option>Low</option><option selected>Medium</option><option>High</option></select>
-        </label>
-        <label>Internet access
-          <select name="Internet_Access"><option selected>Yes</option><option>No</option></select>
-        </label>
-        <label>Family income
-          <select name="Family_Income"><option>Low</option><option selected>Medium</option><option>High</option></select>
-        </label>
-        <label>Teacher quality
-          <select name="Teacher_Quality"><option>Low</option><option selected>Medium</option><option>High</option></select>
-        </label>
-        <label>School type
-          <select name="School_Type"><option selected>Public</option><option>Private</option></select>
-        </label>
-        <label>Peer influence
-          <select name="Peer_Influence"><option>Negative</option><option>Neutral</option><option selected>Positive</option></select>
-        </label>
-        <label>Learning disabilities
-          <select name="Learning_Disabilities"><option selected>No</option><option>Yes</option></select>
-        </label>
-        <label>Parental education
-          <select name="Parental_Education_Level">
-            <option>High School</option><option selected>College</option><option>Postgraduate</option>
-          </select>
-        </label>
-        <label>Distance from home
-          <select name="Distance_from_Home"><option selected>Near</option><option>Moderate</option><option>Far</option></select>
-        </label>
-        <label>Gender
-          <select name="Gender"><option selected>Male</option><option>Female</option></select>
-        </label>
-      </div>
+      <footer>
+        <span>STUDENT INSIGHTS</span>
+        <span>Built for academic exploration · Machine learning</span>
+      </footer>
+    </main>
+  </div>
 
-      <button id="predictButton" type="submit">Predict exam score</button>
-      <p id="status" role="status"></p>
-    </form>
-
-    <section id="result" class="result" hidden aria-live="polite">
-      <h2>Prediction result</h2>
-      <p>Estimated exam score</p>
-      <div id="score" class="score">--</div>
-      <p id="model"></p>
-      <h3>Study recommendations</h3>
-      <ul id="recommendations"></ul>
-      <p class="note">This is a model estimate, not a guaranteed exam result.</p>
-    </section>
-  </main>
   <script src="script.js"></script>
 </body>
 </html>
